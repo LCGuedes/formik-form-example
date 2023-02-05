@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const Schema = yup.object().shape({
-  nome: yup.string().label("nome").required("Digite seu nome"),
+  nome: yup.string().email("email").label("nome").required("Digite seu nome"),
 
   cpf: yup
     .string()

@@ -9,6 +9,8 @@ import { Schema } from "./src/schema";
 import { deficiencia, estadoCivil } from "./src/data";
 import { Input } from "./styles";
 
+import FormikInput from "./src/components/formikInput";
+
 interface Iprops {
   nome: string;
   cpf: string;
@@ -93,11 +95,13 @@ export default function App() {
           <View>
             <>
               <Text>formulario</Text>
-              {errors.nome && touched.nome && <Text>{errors.nome}</Text>}
-              <Input
-                value={values.nome}
-                onBlur={handleBlur("nome")}
-                onChangeText={handleChange("nome")}
+
+              <FormikInput
+                errors={errors.nome}
+                touched={touched.nome}
+                values={values.nome}
+                handleBlur={handleBlur("nome")}
+                handleChange={handleChange("nome")}
               />
               {errors.cpf && touched.cpf && <Text>{errors.cpf}</Text>}
               <Input
@@ -114,13 +118,21 @@ export default function App() {
                 onValueChange={handleChange("estado_civil")}
                 selectedValue={values.estado_civil}
               />
-              {errors.conjuge_nome && touched.conjuge_nome && (
+              {/* {errors.conjuge_nome && touched.conjuge_nome && (
                 <Text>{errors.conjuge_nome}</Text>
               )}
               <Input
                 value={values.conjuge_nome}
                 onBlur={handleBlur("conjuge_nome")}
                 onChangeText={handleChange("conjuge_nome")}
+                editable={disable}
+              /> */}
+              <FormikInput
+                errors={errors.conjuge_nome}
+                touched={touched.conjuge_nome}
+                values={values.conjuge_nome}
+                handleBlur={handleBlur("conjuge_nome")}
+                handleChange={handleChange("conjuge_nome")}
                 editable={disable}
               />
 
